@@ -861,40 +861,7 @@
                   recorded by the police</span>
               </h3>
 
-              <script>
-                // Récupérez un contexte de dessin à partir de l'élément canvas
-                var ctx = document.getElementById('myChart').getContext('2d');
 
-                // Définissez les données du graphique (ex. données de test)
-                var data = {
-                  labels: ['Belgium', 'Bulgaria', 'Mars', 'Avril', 'Mai'],
-                  datasets: [
-                    {
-                      label: 'Ventes',
-                      data: [Belgium, Bulgaria, 3, 5, 2],
-                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                      borderColor: 'rgba(75, 192, 192, 1)',
-                      borderWidth: 1,
-                    },
-                  ],
-                };
-
-                // Configurez les options du graphique
-                var options = {
-                  scales: {
-                    y: {
-                      beginAtZero: true,
-                    },
-                  },
-                };
-
-                // Créez le graphique
-                var myChart = new Chart(ctx, {
-                  type: 'bar', // Vous pouvez choisir le type de graphique souhaité
-                  data: data,
-                  options: options,
-                });
-              </script>
               <canvas id="myChart" width="400" height="200"></canvas>
 
 
@@ -907,9 +874,9 @@
                     $(document).ready(function () {
                       // Données du graphique
                       var data = {
-                        labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
+                        labels: [2002, 2003, , 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012],
                         datasets: [{
-                          label: 'Ventes mensuelles',
+                          label: 'Taux de criminalité',
                           data: [12, 19, 3, 5, 2],
                           backgroundColor: 'rgba(75, 192, 192, 0.2)',
                           borderColor: 'rgba(75, 192, 192, 1)',
