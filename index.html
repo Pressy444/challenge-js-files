@@ -868,36 +868,290 @@
 
 
 
-              <div id="divMonGraphique" style="width: 600px; height: 300px;">
+              <div id="divMonGraphique" style="width: 900px; height: 600px;">
                 <canvas id="monGraphique">
                   <script>
-                    $(document).ready(function () {
-                      // Données du graphique
-                      var data = {
-                        labels: [2002, 2003, , 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012],
-                        datasets: [{
-                          label: 'Taux de criminalité',
-                          data: [12, 19, 3, 5, 2],
+
+
+                    // Obtenez une référence à l'élément canvas
+                    var ctx = document.getElementById('monGraphique').getContext('2d');
+
+                    // Définissez vos données (remplacez cela par vos données réelles)
+                    var data = {
+                      labels: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+                      datasets: [
+                        {
+                          label: 'Belgium',
+                          data: [1012.8, 1007.8, 1013.7, 999.4, 1022.8, 1034.4, 1043.6, 1067.3, 1072.0, 1111.0, 1073.8],
                           backgroundColor: 'rgba(75, 192, 192, 0.2)',
                           borderColor: 'rgba(75, 192, 192, 1)',
                           borderWidth: 1
-                        }]
-                      };
+                        },
+                        {
+                          label: 'Bulgaria',
+                          data: [146.9, 143.9, 142.1, 137.8, 136.4, 134.7, 126.7, 138.1, 147.0, 128.6, 120.6],
+                          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                          borderColor: 'rgba(255, 99, 132, 1)',
+                          borderWidth: 1
+                        },
 
-                      // Options du graphique
-                      var options = {
-                        responsive: true,
-                        maintainAspectRatio: false
-                      };
+                        {
+                          label: 'Czech Republic',
+                          data: [372.3, 357.7, 351.6, 344.1, 336.4, 357.4, 343.8, 332.8, 313.4, 317.2, 304.5],
+                          backgroundColor: 'rgba(102, 250, 38, 0.2)',
+                          borderColor: 'rgba(102, 250, 38, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Denamark',
+                          data: [491.5, 486.2, 474.4, 432.7, 425.1, 445.3, 477.0, 491.8, 471.1, 466.8, 440.8],
+                          backgroundColor: 'rgba(3, 33, 252  , 0.2)',
+                          borderColor: 'rgba(3, 33, 252 , 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Germany',
+                          data: [6507.4, 6572.1, 6633.2, 6391.7, 6304.2, 6284.7, 6114.1, 6054.3, 5933.3, 5990.7, 5997.0],
+                          backgroundColor: 'rgba(7, 252, 3 , 0.2)',
+                          borderColor: 'rgba(7, 252, 3 , 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Estonia',
+                          data: [53.3, 53.6, 53.0, 52.9, 51.8, 50.4, 51.0, 48.4, 48.3, 42.6, 40.8],
+                          backgroundColor: 'rgba(225, 252, 3, 0.2)',
+                          borderColor: 'rgba(225, 252, 3, 1)',
+                          borderWidth: 1
+                        }
+                        ,
+                        {
+                          label: 'Ireland',
+                          data: [106.4, 103.5, 99.2, 102.2, 103.2, 0, 0, 0, 0, 0, 0],
+                          backgroundColor: 'rgba(252, 97, 3, 0.2)',
+                          borderColor: 'rgba(252, 97, 3, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Greece',
+                          data: [441.1, 441.8, 405.6, 456.0, 463.8, 423.4, 417.4, 386.9, 334.0, 194.0, 194.1],
+                          backgroundColor: 'rgba(252, 184, 3, 0.2)',
+                          borderColor: 'rgba(252, 184, 3, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Spain',
+                          data: [2183.5, 2144.2, 2141.3, 2230.9, 2267.1, 2309.9, 2396.9, 2339.2, 2297.5, 2285.5, 2268.9],
+                          backgroundColor: 'rgba(6, 186, 30, 0.2)',
+                          borderColor: 'rgba(6, 186, 30, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'France',
+                          data: [4113.9, 3974.7, 3825.4, 3775.8, 3725.6, 3589.3, 3558.3, 3521.3, 0, 0, 0],
+                          backgroundColor: 'rgba(3, 102, 254, 0.2)',
+                          borderColor: 'rgba(3, 102, 254, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Croatia',
+                          data: [77.9, 80.4, 85.4, 79.9, 81.0, 75.9, 74.6, 73.5, 73.3, 75.6, 72.2],
+                          backgroundColor: 'rgba(254, 15, 3, 0.2)',
+                          borderColor: 'rgba(254, 15, 3, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Italy',
+                          data: [2231.6, 2456.9, 2417.7, 2579.1, 2771.5, 2933.1, 2709.9, 2629.8, 2621.0, 2763.0, 2818.8],
+                          backgroundColor: 'rgba(3, 254, 246, 0.2)',
+                          borderColor: 'rgba(3, 254, 246, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Cyprus',
+                          data: [4.8, 7.3, 7.6, 7.2, 7.9, 7.6, 7.3, 7.1, 8.4, 8.5, 8.0],
+                          backgroundColor: 'rgba(251, 247, 7, 0.2)',
+                          borderColor: 'rgba(251, 247, 7, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Latvia',
+                          data: [49.3, 51.8, 62.2, 51.4, 62.3, 55.6, 57.5, 56.7, 51.1, 51.6, 49.9],
+                          backgroundColor: 'rgba(42, 243, 192, 0.2)',
+                          borderColor: 'rgba(42, 243, 192, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Lithuania',
+                          data: [72.6, 79.1, 84.1, 82.1, 75.5, 68.0, 72.0, 76.3, 70.6, 72.1, 75.3],
+                          backgroundColor: 'rgba(118, 68, 138, 0.2)',
+                          borderColor: 'rgba(118, 68, 138, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Luxembourg',
+                          data: [26.0, 26.2, 26.9, 25.3, 25.9, 28.3, 28.2, 32.4, 30.5, 35.7, 37.6],
+                          backgroundColor: 'rgba(241, 196, 15, 0.2)',
+                          borderColor: 'rgba(241, 196, 15, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Hungary',
+                          data: [420.8, 413.3, 418.8, 436.5, 425.9, 426.9, 408.4, 394.0, 447.2, 451.4, 472.2],
+                          backgroundColor: 'rgba(148, 49, 38, 0.2)',
+                          borderColor: 'rgba148, 49, 38(, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Malta',
+                          data: [17.0, 17.7, 18.4, 18.6, 16.5, 15.0, 13.8, 12.0, 13.3, 14.2, 15.6],
+                          backgroundColor: 'rgba(108, 52, 131, 0.2)',
+                          borderColor: 'rgba(108, 52, 131, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'The Nederlands',
+                          data: [1401.9, 1369.3, 1319.5, 1348.3, 1311.8, 1303.8, 1277.8, 1254.5, 1194.0, 1194.1, 1139.7],
+                          backgroundColor: 'rgba(36, 113, 163, 0.2)',
+                          borderColor: 'rgba(36, 113, 163, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Austria',
+                          data: [591.6, 643.3, 643.6, 605.3, 589.5, 594.2, 572.7, 591.6, 535.7, 540.0, 548.0],
+                          backgroundColor: 'rgba(229, 152, 102, 0.2)',
+                          borderColor: 'rgba(229, 152, 102, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Poland',
+                          data: [1404.2, 1466.6, 1461.2, 1380.0, 1287.9, 1153.0, 1082.1, 1129.6, 1151.2, 1159.6, 1119.8],
+                          backgroundColor: 'rgba(171, 178, 185, 0.2)',
+                          borderColor: 'rgba(171, 178, 185, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Portugal',
+                          data: [391.6, 417.4, 416.4, 392.7, 399.6, 398.6, 430.5, 426.0, 422.6, 413.7, 403.2],
+                          backgroundColor: 'rgba(171, 178, 185, 0.2)',
+                          borderColor: 'rgba(171, 178, 185, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Roumania',
+                          data: [312.2, 276.8, 231.6, 208.2, 232.7, 281.5, 289.3, 299.9, 292.7, 258.9, 308.5],
+                          backgroundColor: 'rgba(171, 178, 185, 0.2)',
+                          borderColor: 'rgba(171, 178, 185, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Slovenia',
+                          data: [77.2, 76.6, 86.6, 84.4, 90.4, 88.2, 81.9, 87.5, 89.5, 88.7, 91.4],
+                          backgroundColor: 'rgba(230, 176, 170, 0.2)',
+                          borderColor: 'rgba(230, 176, 170, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Slovakia',
+                          data: [107.4, 111.9, 131.2, 123.6, 115.2, 110.8, 104.8, 104.9, 95.3, 92.9, 90.4],
+                          backgroundColor: 'rgba(245, 183, 177 , 0.2)',
+                          borderColor: 'rgba(245, 183, 177 , 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Finland',
+                          data: [435.0, 443.5, 445.5, 432.3, 416.1, 435.8, 440.7, 441.4, 431.6, 458.3, 425.4],
+                          backgroundColor: 'rgba(215, 189, 226, 0.2)',
+                          borderColor: 'rgba(215, 189, 226, 1)',
+                          borderWidth: 1
+                        }
+                        ,
+                        {
+                          label: 'Sweden',
+                          data: [1234.8, 1255.4, 1248.7, 1241.8, 1225.0, 1306.3, 1377.9, 1405.6, 1370.4, 1416.3, 1402.6],
+                          backgroundColor: 'rgba(210, 180, 222, 0.2)',
+                          borderColor: 'rgba(210, 180, 222, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Iceland',
+                          data: [19.9, 17.5, 16.6, 12.0, 13.5, 13.0, 14.6, 16.0, 14.9, 12.6, 11.7],
+                          backgroundColor: 'rgba(169, 204, 227, 0.2)',
+                          borderColor: 'rgba(169, 204, 227, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Liechtenstein',
+                          data: [1.0, 1.1, 1.0, 1.1, 1.2, 1.1, 1.1, 1.2, 1.0, 1.1, 1.1],
+                          backgroundColor: 'rgba(174, 214, 241, 0.2)',
+                          borderColor: 'rgba(174, 214, 241, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Norway',
+                          data: [319.5, 303.8, 287.8, 275.7, 277.0, 271.7, 264.2, 277.1, 270.7, 264.2, 273.5],
+                          backgroundColor: 'rgba(163, 228, 215, 0.2)',
+                          borderColor: 'rgba(163, 228, 215, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Switzerland',
+                          data: [356.8, 379.3, 389.4, 352.7, 335.2, 326.2, 323.2, 676.3, 656.9, 693.0, 750.4],
+                          backgroundColor: 'rgba(208, 236, 231, 0.2)',
+                          borderColor: 'rgba(208, 236, 231, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Montenegro',
+                          data: [8.9, 8.6, 8.2, 9.6, 9.6, 9.3, 8.3, 8.1, 7.0, 6.1, 5.8],
+                          backgroundColor: 'rgba(169, 223, 191, 0.2)',
+                          borderColor: 'rgba(169, 223, 191, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Macedonia',
+                          data: [18.3, 22.5, 22.7, 22.6, 22.0, 26.2, 28.3, 27.3, 28.5, 29.5, 29.9],
+                          backgroundColor: 'rgba(171, 235, 198, 0.2)',
+                          borderColor: 'rgba(171, 235, 198, 1)',
+                          borderWidth: 1
+                        },
+                        {
+                          label: 'Serbia',
+                          data: [95.6, 90.4, 99.9, 102.1, 99.2, 104.9, 106.0, 102.4, 101.1, 99.5, 96.1],
+                          backgroundColor: 'rgba(133, 193, 233, 0.2)',
+                          borderColor: 'rgba(133, 193, 233, 1)',
+                          borderWidth: 1
+                        }
+                        ,
+                        {
+                          label: 'Turkey',
+                          data: [438.7, 472.2, 507.5, 667.8, 975.1, 970.6, 1012.3, 1288.1, 1521.7, 1652.8, 1904.5],
+                          backgroundColor: 'rgba(247, 220, 111,0.2)',
+                          borderColor: 'rgba(247, 220, 111, 1)',
+                          borderWidth: 1
+                        }
+                      ]
+                    };
 
-                      // Création du graphique
-                      var ctx = document.getElementById('monGraphique').getContext('2d');
-                      var monGraphique = new Chart(ctx, {
-                        type: 'bar', // Type de graphique (bar, line, pie, etc.)
-                        data: data,
-                        options: options
-                      });
+                    // Créez le graphique
+                    var myChart = new Chart(ctx, {
+                      type: 'bar', // Vous pouvez utiliser un autre type de graphique si vous le souhaitez
+                      data: data,
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true
+                          }
+                        }
+                      }
                     });
+                    // Options du graphique
+                    var options = {
+                      responsive: true,
+                      maintainAspectRatio: false
+                    };
+
+
+
                   </script>
                 </canvas>
               </div>
